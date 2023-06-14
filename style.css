@@ -184,6 +184,8 @@ body {
   display: none;
   z-index: 1;
 }
-.pageclock {
+.pagetimeclock,
+.pagetimeout,
+.pagetimeword{
   display: none;
 }
