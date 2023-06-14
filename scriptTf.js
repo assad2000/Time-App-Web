@@ -155,19 +155,20 @@ function pac (ti,se,mi) {
   irpac = parseInt((3600*mi)+(60*se)+ti);
   return irpac;
   
-  
-  
-  
-  
-  
-  
-  
 }
 function cap (irpac){
   minN = Math.floor(irpac / 3600);
   secN = Math.floor((irpac-(minN*3600))/60);
   timeN = (irpac-(minN*3600)-(secN*60));
   return `${topad(minN)}:${topad(secN)}:${topad(timeN)}`;
+}
+
+
+
+let word = setInterval(function (){timeWord()},1000);
+function timeWord () {
+  d = new Date();
+  document.getElementById('re').innerHTML = d.toLocaleTimeString();
 }
 
 
