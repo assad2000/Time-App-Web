@@ -1,4 +1,4 @@
-timeMS = document.getElementById('timems'),
+let timeMS = document.getElementById('timems'),
 timeS = document.getElementById('times'),
 timeMin = document.getElementById('timemin'),
 per = document.getElementById('per'),
@@ -9,21 +9,14 @@ buttonST = document.getElementById('startTimer'),
 buttonPT = document.getElementById('stopTimer'),
 buttonRT = document.getElementById('resetTimer'),
 buttonPR = document.getElementById('periodBu');
-isRan = false;
-arTimer = [00,00,00];
-arMath = [];
-time = 0;
-sec = 0;
-min = 0;
+var isRan = false,
+arTimer = [00,00,00],
+arMath = [],
+time = 0,
+sec = 0,
+min = 0,
 i = 0;
 
-/*function blal(){
-  a = 'assad';
-  z = 'zayti';
-  g = 23
-  return [a,z,g];
-}
-console.log(blal()[0]);*/
 
 buttonST.addEventListener('click', function(){
   if (!isRan) {
@@ -60,7 +53,7 @@ buttonRT.addEventListener('click', function(){
 })
 buttonPR.addEventListener('click', function(){
   if (isRan == true) {
-    col = `${tostring(min)}:${tostring(sec)}:${tostring(time)}`;
+    col = `${topad(min)}:${topad(sec)}:${topad(time)}`;
     document.querySelector('.time').style.marginTop = '7.5%';
     document.querySelector('#buttons').style.marginTop = '23.5%';
     
@@ -77,7 +70,7 @@ buttonPR.addEventListener('click', function(){
   }
 })
 
-function tostring(str) {
+function topad(str) {
   str = Math.abs(str);
   ret = str.toString().padStart(2, "0");
   return ret;
@@ -89,7 +82,7 @@ function lope(x,y) {
   wn = document.createElement('div');
   to = document.createElement('div');
   tr = document.createElement('div');
-  wn.textContent = tostring(i);
+  wn.textContent = topad(i);
   to.textContent = x;
   tr.textContent = y;
   wn.classList.add('numb'+i);
@@ -101,17 +94,17 @@ function lope(x,y) {
     document.querySelector(`.numb${j}`).style.color = '#777777';
   }
   if (arMath[2]) {
-    mini = math(arMath)[0]+1;
-    maxi = math(arMath)[1]+1;
+    mini = mathmn(arMath)[0]+1;
+    maxi = mathmn(arMath)[1]+1;
     document.querySelector(`.numb${mini}`).style.color = '#6163ED';
     document.querySelector(`.numb${maxi}`).style.color = '#D52742';
   }
 }
 
 function updateTimer() {
-  timeMS.textContent = tostring(time);
-  timeS.textContent = tostring(sec);
-  timeMin.textContent = tostring(min);
+  timeMS.textContent = topad(time);
+  timeS.textContent = topad(sec);
+  timeMin.textContent = topad(min);
   if (isRan === true) {
     time++;
     if (time == '60') {
@@ -150,7 +143,7 @@ function updateTimerM(){
   }
 }
 
-function math(arMath) {
+function mathmn(arMath) {
   maxNu = Math.max(...arMath);
   minNu = Math.min(...arMath);
   maxIn = arMath.indexOf(maxNu);
@@ -174,22 +167,7 @@ function cap (irpac){
   minN = Math.floor(irpac / 3600);
   secN = Math.floor((irpac-(minN*3600))/60);
   timeN = (irpac-(minN*3600)-(secN*60));
-  return `${tostring(minN)}:${tostring(secN)}:${tostring(timeN)}`;
+  return `${topad(minN)}:${topad(secN)}:${topad(timeN)}`;
 }
 
 
-
-
-
-/*const containers = document.querySelectorAll('.db');
-
-containers.forEach(function(container) {
-  container.addEventListener('touchstart', function() {
-    container.classList.add('active');
-  });
-
-  container.addEventListener('touchend', function() {
-    container.classList.remove('active');
-  });
-});
-*/
