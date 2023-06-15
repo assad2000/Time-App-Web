@@ -5,17 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Time App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
+  
 </head>
+
+
 <body>
 
+<!--          bar pages           -->
 <div class="nav"><div class="but">
   <div class="db timeout"><button id="timeout">المؤقت</button></div>
   <div class="db timeoff"><button id="timeoff">ساعة الإيقاف</button></div>
   <div class="db timeword"><button id="timeword">الساعة العالمية</button></div>
   <div class="db timeclock"><button id="timeclock">منبه</button></div>
-</div></div>
+  </div>
+</div>
 
+<!--            page off         -->
 
 <div class="pagetimeoff">
   <div class="time"><div>
@@ -48,22 +55,36 @@
   </div>
 </div>
 
-
+<!--         page clock           -->
 
 <div class="pagetimeclock">
   <h1>Clock</h1>
 </div>
+
+<!--          page out           -->
+
 <div class="pagetimeout">
   <h1>Out</h1>
 </div>
+<!--          page word          -->
 <div class="pagetimeword">
-  <h1>Word</h1>
-  <p id="re"></p>
+  <div class="wd">
+    <p id="re"></p>
+    <p id="se"></p>
+  </div>
+  <div class="ro">
+    <i id="menu-w" class="fa-solid fa-ellipsis-vertical"></i>
+    <i id="add-w" class="fa-solid fa-plus"></i>
+    <div class="cities">
+      
+    </div>
+  </div>
 </div>
 
-
+<!--          End           -->
 
 <script src="scriptTf.js"></script>
+<script src="scriptwr.js"></script></script>
 <script src="src.js"></script>
 </body>
 </html>
