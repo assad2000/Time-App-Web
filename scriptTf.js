@@ -163,12 +163,13 @@ function cap (irpac){
   return `${topad(minN)}:${topad(secN)}:${topad(timeN)}`;
 }
 
-
+//-------------
 
 let word = setInterval(function (){timeWord()},1000);
 function timeWord () {
   d = new Date();
-  document.getElementById('re').innerHTML = d.toLocaleTimeString();
+  document.getElementById('re').innerHTML = d.toLocaleTimeString().slice(0,8);
+  document.getElementById('se').innerHTML = d.toTimeString().slice(9,13)+d.toTimeString().slice(26,31);
 }
 
 
