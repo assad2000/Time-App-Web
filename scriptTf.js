@@ -1,4 +1,3 @@
-//&&
 let timeMS = document.getElementById('timems'),
 timeS = document.getElementById('times'),
 timeMin = document.getElementById('timemin'),
