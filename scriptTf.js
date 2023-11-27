@@ -6,11 +6,11 @@ perbar = document.querySelector('.period'),
 nos = document.querySelector('.sl'),
 
 buttonST = document.getElementById('startTimer'),
-buttonPT = document.getElementById('stopTimer'),
-buttonRT = document.getElementById('resetTimer'),
+//buttonPT = document.getElementById('stopTimer'),
+//buttonRT = document.getElementById('resetTimer'),
 buttonPR = document.getElementById('periodBu');
 var isRan = false,
-arTimer = [00,00,00],
+arTimer = [0,0,0],
 arMath = [],
 time = 0,
 sec = 0,
@@ -21,17 +21,27 @@ i = 0;
 buttonST.addEventListener('click', function(){
   if (!isRan) {
     isRan = true;
-    buttonST.style.zIndex = '0';
-    buttonPT.style.zIndex = '1';
-    buttonRT.style.zIndex = '0';
+    buttonST.style.background = '#CC2014';
+    buttonST.textContent = 'إيقاف';
+    buttonPR.textContent = 'دورة';
+    //buttonPT.style.zIndex = '1';
+    //buttonRT.style.zIndex = '0';
     buttonPR.style.zIndex = '1';
     buttonPR.style.color = '#000'; 
     updateTimer();
     if (arTimer[2]) {
       updateTimerM();
     }
+  } else if (isRan) {
+    isRan = false;
+    buttonST.textContent = 'استئناف';
+    buttonPR.textContent = 'إعادة الضبط';
+    buttonST.style.background = '#585BDE';
+    updateTimer();
   }
 });
+
+/*
 buttonPT.addEventListener('click', function(){
   if (isRan) {
     isRan = false;
@@ -43,14 +53,18 @@ buttonPT.addEventListener('click', function(){
     updateTimer();
   }
 })
+*/
+/*
 buttonRT.addEventListener('click', function(){
   isRan = 0;
   buttonST.textContent = 'ابدأ';
+  buttonST.style.background = '#585BDE';
   buttonPR.style.zIndex = '1';
   buttonPR.style.color = '#797979';
   per.textContent = '';
   updateTimer();
 })
+*/
 buttonPR.addEventListener('click', function(){
   if (isRan == true) {
     col = `${topad(min)}:${topad(sec)}:${topad(time)}`;
@@ -67,6 +81,13 @@ buttonPR.addEventListener('click', function(){
     per.style.visibility = 'visible';
     
     arTimer = [min, sec, time];
+  }else if (!isRan) {
+    buttonST.textContent = 'ابدأ';
+    buttonPR.textContent = 'دورة';
+    isRan = 0;
+    buttonPR.style.color = '#797979';
+    per.textContent = '';
+    updateTimer();
   }
 })
 
@@ -128,7 +149,7 @@ function updateTimer() {
     per.style.visibility = 'hidden';
     document.querySelector('.time').style.marginTop = '31%';
     document.querySelector('#buttons').style.marginTop = '0';
-    arTimer = [00,00,00];
+    arTimer = [0,0,0];
     arMath = [];
     isRan = false;
     updateTimer();
@@ -154,22 +175,13 @@ function mathmn(arMath) {
 function pac (ti,se,mi) {
   irpac = parseInt((3600*mi)+(60*se)+ti);
   return irpac;
-  
+
 }
 function cap (irpac){
   minN = Math.floor(irpac / 3600);
   secN = Math.floor((irpac-(minN*3600))/60);
   timeN = (irpac-(minN*3600)-(secN*60));
   return `${topad(minN)}:${topad(secN)}:${topad(timeN)}`;
-}
-
-//-------------
-
-let word = setInterval(function (){timeWord()},1000);
-function timeWord () {
-  d = new Date();
-  document.getElementById('re').innerHTML = d.toLocaleTimeString().slice(0,8);
-  document.getElementById('se').innerHTML = d.toTimeString().slice(9,13)+d.toTimeString().slice(26,31);
 }
 
 

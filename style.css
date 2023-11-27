@@ -105,22 +105,11 @@ body {
 #startTimer {
   background: #585BDE;
   left: 44px;
-  z-index: 1;
-}
-#stopTimer {
-  background: #CC2014;
-  left: -75.4px;
 }
 #periodBu {
   background: #EDEDED;
   color: #797979;
-  left: 200px;
-  top: 68.5%;
-}
-#resetTimer {
-  background: #EDEDED;
-  color: #000;
-  left: -40px;
+  left: 80px;
 }
 
 .period {
